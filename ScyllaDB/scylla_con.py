@@ -9,15 +9,7 @@ from cassandra.auth import PlainTextAuthProvider
 
 
 def getCluster():
-    profile = ExecutionProfile(load_balancing_policy=TokenAwarePolicy(DCAwareRoundRobinPolicy(local_dc='AWS_US_EAST_1')))
-
-    return Cluster(
-        execution_profiles={EXEC_PROFILE_DEFAULT: profile},
-        contact_points=[
-            "3.231.189.156", "54.208.0.33", "18.205.164.246"
-        ],
-        port=9042,
-        auth_provider = PlainTextAuthProvider(username='scylla', password='Gos4lTkO3rW7Aqx'))
+    return Cluster(port=9042)
 
 print('Connecting to cluster')
 cluster = getCluster()
